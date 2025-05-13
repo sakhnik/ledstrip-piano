@@ -1,7 +1,7 @@
 TODO
 
   - [x] map note -> led number
-  - [ ] create a melody player: \[(time, note, action on/off, color)\]
+  - [x] create a melody player: \[(time, note, action on/off, color)\]
   - [ ] tempo control: pause, step, slow down, play faster, go back
 
   - [ ] connect to WiFi

@@ -1,9 +1,8 @@
 #pragma once
 
+#include "Defs.h"
 #include <cstdint>
 #include <limits>
-
-enum class Pitch { C, Cs, D, Ds, E, F, Fs, G, Gs, A, As, B };
 
 class Mapping
 {
