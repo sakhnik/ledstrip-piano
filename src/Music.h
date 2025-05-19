@@ -8,3 +8,10 @@ struct Polka
     Event* GetEvents() override;
     int GetEventsCount() override;
 };
+
+struct Menuet
+    : Piece
+{
+    Event* GetEvents() override;
+    int GetEventsCount() override;
+};
