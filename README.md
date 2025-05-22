@@ -4,9 +4,9 @@ TODO
   - [x] create a melody player: \[(time, note, action on/off, color)\]
   - [ ] tempo control: pause, step, slow down, play faster, go back
 
-  - [ ] connect to WiFi
-  - [ ] create web interface/API
+  - [x] connect to WiFi
   - [ ] OTA update  
+  - [ ] create web interface/API
   - [ ] documentation (BOM, assembly guide)
   - [ ] enclosure
 
