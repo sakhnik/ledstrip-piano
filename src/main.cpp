@@ -2,9 +2,8 @@
 #include "Mapping.h"
 #include "Player.h"
 #include "Music.h"
-#include "esp32-hal-gpio.h"
-#include <Arduino.h>
 #include <WiFi.h>
+#include <ESPmDNS.h>
 
 Mapping mapping;
 Polka p;
@@ -19,6 +18,7 @@ void setup()
     while (!Serial) {
     }
 
+    MDNS.begin(Secrets::HOSTNAME);
     WiFi.setHostname(Secrets::HOSTNAME);
     WiFi.mode(WIFI_STA);
     WiFi.setAutoReconnect(true);
