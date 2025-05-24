@@ -1,5 +1,4 @@
 #include "Music.h"
-#include <iterator>
 
 namespace {
 
@@ -491,7 +490,7 @@ Event* Polka::GetEvents()
 
 int Polka::GetEventsCount()
 {
-    return std::size(polka);
+    return sizeof(polka) / sizeof(polka[0]);
 }
 
 Event* Menuet::GetEvents()
@@ -501,5 +500,5 @@ Event* Menuet::GetEvents()
 
 int Menuet::GetEventsCount()
 {
-    return std::size(menuet);
+    return sizeof(menuet) / sizeof(menuet[0]);
 }

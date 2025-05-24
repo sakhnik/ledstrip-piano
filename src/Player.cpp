@@ -1,6 +1,5 @@
 #include "Player.h"
 #include "Mapping.h"
-#include "Adafruit_NeoPixel.h"
 #include "Defs.h"
 #include <Adafruit_NeoPixel.h>
 
@@ -55,7 +54,7 @@ void Player::NextEvent()
                 this
             );
             if (!task) {
-                printf("Note on timer failure\n");
+                Serial.println("Note on timer failure\n");
             }
             return;
             }
@@ -115,7 +114,7 @@ void Player::NoteOn(const Event &event)
             reinterpret_cast<void *>(static_cast<intptr_t>(pos))
         );
         if (!task) {
-            printf("Note off timer failure\n");
+            Serial.println("Note off timer failure\n");
         }
     }
 }
