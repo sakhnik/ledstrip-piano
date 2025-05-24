@@ -5,7 +5,7 @@ TODO
   - [ ] tempo control: pause, step, slow down, play faster, go back
 
   - [x] connect to WiFi
-  - [ ] OTA update  
+  - [x] OTA update  
   - [ ] create web interface/API
   - [ ] documentation (BOM, assembly guide)
   - [ ] enclosure

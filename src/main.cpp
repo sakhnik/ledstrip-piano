@@ -4,6 +4,7 @@
 #include "Music.h"
 #include <WiFi.h>
 #include <ESPmDNS.h>
+#include <ArduinoOTA.h>
 
 Mapping mapping;
 Polka p;
@@ -14,6 +15,8 @@ constexpr const auto LED_PIN = GPIO_NUM_8;
 
 void setup()
 {
+    setCpuFrequencyMhz(80);
+
     Serial.begin(115200);
     while (!Serial) {
     }
@@ -23,13 +26,19 @@ void setup()
     WiFi.mode(WIFI_STA);
     WiFi.setAutoReconnect(true);
     WiFi.begin(Secrets::WIFI_SSID, Secrets::WIFI_PASS);
+
     pinMode(LED_PIN, OUTPUT);
+
+    ArduinoOTA.setHostname(Secrets::HOSTNAME);
+    ArduinoOTA.begin();
 
     player.Setup();
 }
 
 void loop()
 {
+    ArduinoOTA.handle();
+
     player.Tick();
 
     auto now = millis();
