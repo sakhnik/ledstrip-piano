@@ -5,7 +5,6 @@
 #include "esp32-hal-gpio.h"
 #include <Arduino.h>
 #include <WiFi.h>
-#include <iostream>
 
 Mapping mapping;
 Polka p;
@@ -45,14 +44,17 @@ void loop()
             static auto state = HIGH;
             state = HIGH - state;
             digitalWrite(LED_PIN, state);
-            std::cout << "wifi=" << wifiStatus << std::endl;
+
+            Serial.print(F("wifi="));
+            Serial.println(wifiStatus);
         }
     } else {
         if (!connectionReported) {
             connectionReported = true;
             digitalWrite(LED_PIN, LOW);
             auto ip = WiFi.localIP();
-            std::cout << "Connected to WiFi: " << ip.toString().c_str() << std::endl;
+            Serial.print("Connected to WiFi: ");
+            Serial.println(ip.toString().c_str());
         }
     }
 }
