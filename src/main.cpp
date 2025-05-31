@@ -4,7 +4,9 @@
 #include "Music.h"
 #include <WiFi.h>
 #include <ESPmDNS.h>
+#ifdef ENABLE_OTA
 #include <ArduinoOTA.h>
+#endif
 
 Mapping mapping;
 Polka p;
@@ -17,10 +19,6 @@ void setup()
 {
     setCpuFrequencyMhz(80);
 
-    Serial.begin(115200);
-    while (!Serial) {
-    }
-
     MDNS.begin(Secrets::HOSTNAME);
     WiFi.setHostname(Secrets::HOSTNAME);
     WiFi.mode(WIFI_STA);
@@ -29,15 +27,19 @@ void setup()
 
     pinMode(LED_PIN, OUTPUT);
 
+#ifdef ENABLE_OTA
     ArduinoOTA.setHostname(Secrets::HOSTNAME);
     ArduinoOTA.begin();
+#endif
 
     player.Setup();
 }
 
 void loop()
 {
+#ifdef ENABLE_OTA
     ArduinoOTA.handle();
+#endif
 
     player.Tick();
 
@@ -54,16 +56,14 @@ void loop()
             state = HIGH - state;
             digitalWrite(LED_PIN, state);
 
-            Serial.print(F("wifi="));
-            Serial.println(wifiStatus);
+            printf("wifi=%d\n", wifiStatus);
         }
     } else {
         if (!connectionReported) {
             connectionReported = true;
             digitalWrite(LED_PIN, LOW);
             auto ip = WiFi.localIP();
-            Serial.print("Connected to WiFi: ");
-            Serial.println(ip.toString().c_str());
+            printf("Connected to Wifi: %s\n", ip.toString().c_str());
         }
     }
 }

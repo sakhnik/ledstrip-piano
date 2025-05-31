@@ -54,7 +54,7 @@ void Player::NextEvent()
                 this
             );
             if (!task) {
-                Serial.println("Note on timer failure\n");
+                printf("Note on timer failure\n");
             }
             return;
             }
@@ -114,7 +114,7 @@ void Player::NoteOn(const Event &event)
             reinterpret_cast<void *>(static_cast<intptr_t>(pos))
         );
         if (!task) {
-            Serial.println("Note off timer failure\n");
+            printf("Note off timer failure\n");
         }
     }
 }
